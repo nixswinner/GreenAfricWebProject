@@ -17,4 +17,7 @@ class Product extends Model
     public function basket_items(){
         return $this->belongsTo(BasketItem::class);
     }
+    public function order_items(){
+        return $this->belongsTo(OrderItem::class);
+    }
 }
