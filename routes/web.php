@@ -15,6 +15,7 @@
 //     return view('dashboard');
 // });
 Route::get('/','PagesController@DashBoard')->name('DashBoard');
+Route::get('/addproducts','PagesController@AddProducts')->name('Add Products');
 
 Auth::routes();
 
