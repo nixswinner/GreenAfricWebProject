@@ -48,3 +48,6 @@
       </a>
     </nav>
   </header>
+  <div class="container">
+    @include('includes.messages')
+  </div>

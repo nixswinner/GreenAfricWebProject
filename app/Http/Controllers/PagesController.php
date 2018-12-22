@@ -17,7 +17,7 @@ class PagesController extends Controller
     public function AddProducts(){
 
         //$products = Product::orderBy('created_at','desc')->paginate(10);
-        return view('addproducts');//->with('products',$products);
+        return view('addproducts')->with('success','Add Product success');
     }
     public function orders(){
         return view('orders');

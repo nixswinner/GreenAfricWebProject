@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BasketItems;
+use App\BasketItem;
+use App\Product;
 use Illuminate\Http\Request;
+use Validator;
 
 class BasketItemsController extends Controller
 {
@@ -14,7 +16,8 @@ class BasketItemsController extends Controller
      */
     public function index()
     {
-        //
+        $response= response()->json(BasketItem::get());//has paginations
+        return $response;
     }
 
     /**
@@ -35,7 +38,21 @@ class BasketItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //store 
+         $validator = Validator::make($request->all(),[
+            'basket_id'=>'required',
+            'quantity'=>'required',
+            'total'=>'required',
+            'product_id'=>'required',
+
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors(),400);
+        }
+
+        //store item
+        $response = BasketItem::create($request->all());
+        return response($response,201);
     }
 
     /**
@@ -44,9 +61,12 @@ class BasketItemsController extends Controller
      * @param  \App\BasketItems  $basketItems
      * @return \Illuminate\Http\Response
      */
-    public function show(BasketItems $basketItems)
+    public function show($basketid)
     {
-        //
+        $response = BasketItem::where('basket_id',$basketid)->get();//->with('products')->get();
+       // $basketItems= BasketItem::where('basket_id',$basketid)->get();
+
+        return response($response,200);
     }
 
     /**

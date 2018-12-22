@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  
+{{--                   
                      <!-- Horizontal Form -->
     <div class="box box-info">
         <div class="box-header with-border">
@@ -52,6 +52,14 @@
                 <input type="number" class="form-control" id="inputEmail3" placeholder="Quantity">
               </div>
             </div>
+
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Unit Price</label>
+  
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="inputEmail3" placeholder="Unit Price">
+              </div>
+            </div>
   
             <div class="form-group">
               <label for="text" class="col-sm-2 control-label">Description</label>
@@ -60,14 +68,19 @@
                 <input type="text" class="form-control" id="inputPassword3" placeholder="Description">
               </div>
             </div>
+
             <div class="form-group">
-          
+              <label for="text" class="col-sm-2 control-label">Product Image</label>
+  
+              <div class="col-sm-10">
+                <input type="file" class="form-control" id="image" placeholder="File Image">
               </div>
             </div>
+           
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+            <button type="submit" class="btn btn-info pull-right">Add Product</button>
           </div>
           <!-- /.box-footer -->
         </form>
@@ -77,7 +90,14 @@
               </div>
               <!-- /.box -->
             </div>
-            <!-- /.col -->
+            <!-- /.col --> --}}
+{{-- 
+            {!! Form::open(['action'=>'ProductsController@store','method'=>'POST'])!!}
+
+
+
+            {!! Form::close() !!}  --}}
+            
           </div>
           <!-- /.row -->
         </section>
