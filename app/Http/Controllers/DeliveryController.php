@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\Delivery;
 
 class DeliveryController extends Controller
 {
@@ -34,7 +36,22 @@ class DeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //'order_id','address','county','town','other_details'
+
+        $validator = Validator::make($request->all(),[
+            'order_id'=>'required',
+            'address'=>'required',
+            'county'=>'required',
+            'town'=>'required',
+            'other_details'=>'nullable'
+        ]);
+    
+        if($validator->fails()){
+            return response()->json($validator->errors(),400);
+        }
+        //store item
+        $response = Delivery::create($request->all());
+        return response($response,201);
     }
 
     /**

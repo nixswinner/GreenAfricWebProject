@@ -50,7 +50,7 @@ class ProductCategoryController extends Controller
         ProductCategory::create([
             'name' => $request->get('name')
         ]);
-        return response()->json(['message' => 'Product Category successfully created.'], 200);
+        return redirect('/allproducts')->with('success',$request->get('name').' Category added successfully');
     }
 
     /**

@@ -7,8 +7,8 @@ use App\ProductCategory;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'user_id', 'product_category_id', 'unit_price', 'image'];
-
+    protected $fillable = ['name', 'description', 'product_category_id', 'unit_price', 'image'];
+//, 'user_id',
     public function product_category()
     {
         return $this->belongsTo(ProductCategory::class);

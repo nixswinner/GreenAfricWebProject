@@ -6,6 +6,7 @@ use App\BasketItem;
 use App\Product;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class BasketItemsController extends Controller
 {
@@ -63,9 +64,14 @@ class BasketItemsController extends Controller
      */
     public function show($basketid)
     {
-        $response = BasketItem::where('basket_id',$basketid)->get();//->with('products')->get();
+        //$response = BasketItem::where('basket_id',$basketid)->get();//->with('products')->get();
        // $basketItems= BasketItem::where('basket_id',$basketid)->get();
 
+       $response = DB::table('baskets')
+        ->join('basket_items','basket_items.basket_id','baskets.id')
+        ->join('products','products.id','basket_items.product_id')
+        ->where('basket_id',$basketid)
+        ->get();
         return response($response,200);
     }
 

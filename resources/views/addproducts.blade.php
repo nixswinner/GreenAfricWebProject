@@ -91,13 +91,40 @@
               <!-- /.box -->
             </div>
             <!-- /.col --> --}}
-{{-- 
-            {!! Form::open(['action'=>'ProductsController@store','method'=>'POST'])!!}
+            {{-- array('url' => 'api/products', 'method' => 'post','enctype'=>'multipart/form-data') --}}
+            {{--  --}}
 
+            {!! Form::open(['action' => 'ProductsController@store','method'=>'POST','enctype'=>'multipart/form-data'])!!}
+ 
+            <div class="form-group">
+              {{Form::label('name', 'Name')}}
+              {{Form::text('name', '',['class'=>'form-control','placeholder'=>'Product Name'])}}
+            </div>
+            <div class="form-group">
+              {{Form::label('price', 'Unit Price')}}
+              {{Form::number('unit_price', '',['class'=>'form-control','placeholder'=>'Unit Price'])}}
+            </div>
+            <div class="form-group">
+                {{Form::label('cat', 'Product Category')}}
+               <?php $categories = App\ProductCategory::get()?>
+               {!!Form::select('product_category_id', $categories->pluck('name'), $categories->pluck('id'), 
+               ['class' => 'form-control'])!!}
+              
+            </div>
+            <div class="form-group">
+              {{Form::label('description', 'Descripion')}}
+              {{Form::text('description', '',['class'=>'form-control','placeholder'=>'Description'])}}
+            </div>
 
-
-            {!! Form::close() !!}  --}}
+              <div class="form-group">
+                  {{Form::file('image')}}
+              </div>
+              <div class="form-group">
+              {{Form::submit('Save',['class'=>'btn btn-info pull-right'])}}
+            </div>
             
+            {!! Form::close() !!} 
+  
           </div>
           <!-- /.row -->
         </section>

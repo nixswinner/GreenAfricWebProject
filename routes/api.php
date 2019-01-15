@@ -20,3 +20,7 @@ Route::resource('products', 'Api\ProductController');
 Route::resource('product_categories', 'Api\ProductCategoryController');
 Route::resource('baskets','BasketsController');
 Route::resource('baskets_items','BasketItemsController');
+Route::resource('orders','OrderController');
+Route::resource('order_items','OrderItemController');
+Route::resource('delivery','DeliveryController');
+Route::resource('payment','PaymentController');

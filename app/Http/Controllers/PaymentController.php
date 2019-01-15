@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -35,6 +37,21 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'order_id'=>'required',
+            'user_id'=>'required',
+            'amount'=>'required',
+            'transcation_id'=>'required',
+            'phone_number'=>'required'
+
+        ]);
+    
+        if($validator->fails()){
+            return response()->json($validator->errors(),400);
+        }
+        //store item
+        $response = Payment::create($request->all());
+        return response($response,201);
     }
 
     /**

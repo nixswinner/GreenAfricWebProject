@@ -66,7 +66,7 @@ class BasketsController extends Controller
     {
         //
         $response = $basket = Basket::find($id);
-        return \response($response,200);
+        return response($response,200);
     }
 
     /**

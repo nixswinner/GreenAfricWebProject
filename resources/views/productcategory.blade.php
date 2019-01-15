@@ -24,7 +24,8 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">All Products  Categories</h3>
-              <button class="">Add New Product Category</button>
+              <button class="btn btn-info pull-right" onclick="location.href = 'addproductcategory';">
+                Add New Product Category</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

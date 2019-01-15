@@ -33,25 +33,21 @@
                   <th>       </th>
                   <th>Order ID</th>
                   <th>Date</th>
-                  <th>Status</th>
-                  <th>Created At</th>
-                
+                  <th>Status</th>                
                 </tr>
                 </thead>
                 <tbody>
 
-                {{-- @if(count($products)>0)
-                  @foreach ($products as $product)
+                @if(count($orders)>0)
+                  @foreach ($orders as $order)
                       <tr>
-                      <td><img src="{{$product->image}}" width="50px" height="30px"/></td>
-                          <td>{{$product->name}}</td>
-                          <td>{{$product->description}}</td>
-                          <td>{{$product->unit_price}} </td>
-                          <td> {{$product->created_at}} </td>
+                          <td>{{$order->id}}</td>
+                          <td>{{$order->status}} </td>
+                          <td> {{$order->created_at}} </td>
                         </tr>
                   @endforeach
                  
-                @endif --}}
+                @endif
             
                 </tbody>
                 <tfoot>
@@ -60,9 +56,9 @@
               </table>
             </div>
             <!-- /.box-body -->
-            {{-- @if(count($products)>1)
-            {{$products->links()}}
-           @endif --}}
+            @if(count($orders)>1)
+            {{$orders->links()}}
+           @endif
           </div>
           <!-- /.box -->
             </div>

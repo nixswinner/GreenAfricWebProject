@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\OrderItem;
 
 class OrderItemController extends Controller
 {
@@ -23,7 +25,7 @@ class OrderItemController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +36,19 @@ class OrderItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'order_id'=>'required',
+            'product_id'=>'required',
+            'quantity'=>'required',
+
+        ]);
+    
+        if($validator->fails()){                                                                    
+            return response()->json($validator->errors(),400);
+        }
+        //store item
+        $response = OrderItem::create($request->all());
+        return response($response,201);
     }
 
     /**
