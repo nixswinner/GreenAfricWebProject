@@ -18,6 +18,7 @@ Route::get('/','PagesController@DashBoard')->name('DashBoard');
 Route::get('/addproducts','PagesController@AddProducts')->name('Add Products');
 Route::get('/addproductcategory','PagesController@AddProductCategory')->name('Add Product Category');
 Route::get('/orders','PagesController@orders')->name('Orders');
+Route::get('/orderitems/{order_id}','PagesController@orderItems')->name('OrdersItems');
 Route::get('/productscategory','PagesController@productcategory')->name('Products Categories');
 Route::get('/allproducts','PagesController@allproducts')->name('All Products');
 Route::get('/payments','PagesController@payments')->name('Payments');

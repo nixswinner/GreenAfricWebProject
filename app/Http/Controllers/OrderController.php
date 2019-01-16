@@ -15,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::All();
+        return response($orders,200);
     }
 
     /**
@@ -61,7 +62,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $userorder = Order::find($id);
+        return response($userorder,200);
     }
 
     /**

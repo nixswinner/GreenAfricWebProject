@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\DB;
 use App\OrderItem;
+use App\Product;
 
 class OrderItemController extends Controller
 {
@@ -15,7 +17,11 @@ class OrderItemController extends Controller
      */
     public function index()
     {
-        //
+        //return OrderItem::All();
+        $response = DB::table('order_items')
+        ->join('products','products.id','order_items.product_id')
+        ->get();
+        return response($response);
     }
 
     /**
@@ -57,9 +63,13 @@ class OrderItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order_id)
     {
-        //
+        $response = DB::table('order_items')
+        ->join('products','products.id','order_items.product_id')
+        ->where('order_id',$order_id)
+        ->get();
+        return response($response);
     }
 
     /**
